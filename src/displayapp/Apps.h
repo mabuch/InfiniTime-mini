@@ -22,8 +22,6 @@ namespace Pinetime {
       PassKey,
       QuickSettings,
       Settings,
-      SettingWatchFace,
-      SettingTimeFormat,
       SettingDisplay,
       SettingWakeUp,
       SettingSteps,

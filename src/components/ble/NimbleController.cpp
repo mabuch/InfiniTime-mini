@@ -86,7 +86,6 @@ void NimbleController::Init() {
   deviceInformationService.Init();
   currentTimeClient.Init();
   currentTimeService.Init();
-  navService.Init();
   anService.Init();
   dfuService.Init();
   batteryInformationService.Init();
