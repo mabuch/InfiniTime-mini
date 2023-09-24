@@ -13,7 +13,6 @@ namespace Pinetime {
       Notifications,
       Timer,
       Alarm,
-      FlashLight,
       BatteryInfo,
       HeartRate,
       StopWatch,

@@ -18,7 +18,6 @@
 #include "displayapp/screens/Notifications.h"
 #include "displayapp/screens/SystemInfo.h"
 #include "displayapp/screens/Tile.h"
-#include "displayapp/screens/FlashLight.h"
 #include "displayapp/screens/BatteryInfo.h"
 #include "displayapp/screens/Steps.h"
 #include "displayapp/screens/PassKey.h"
@@ -493,9 +492,6 @@ void DisplayApp::LoadScreen(Apps app, DisplayApp::FullRefreshDirections directio
                                                             watchdog,
                                                             motionController,
                                                             touchPanel);
-      break;
-    case Apps::FlashLight:
-      currentScreen = std::make_unique<Screens::FlashLight>(*systemTask, brightnessController);
       break;
     case Apps::StopWatch:
       currentScreen = std::make_unique<Screens::StopWatch>(*systemTask);
