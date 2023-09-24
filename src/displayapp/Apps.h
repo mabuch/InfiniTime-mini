@@ -15,7 +15,6 @@ namespace Pinetime {
       HeartRate,
       StopWatch,
       Metronome,
-      Steps,
       PassKey,
       QuickSettings,
       Settings,

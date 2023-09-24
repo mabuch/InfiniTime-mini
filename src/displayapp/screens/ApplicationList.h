@@ -45,9 +45,9 @@ namespace Pinetime {
           {Symbols::stopWatch, Apps::StopWatch, true},
           {Symbols::clock, Apps::Alarm, true},
           {Symbols::hourGlass, Apps::Timer, true},
-          {Symbols::shoe, Apps::Steps, true},
           {Symbols::heartBeat, Apps::HeartRate, true},
           {Symbols::drum, Apps::Metronome, true},
+          {Symbols::none, Apps::None, false},
         }};
         ScreenList<nScreens> screens;
       };

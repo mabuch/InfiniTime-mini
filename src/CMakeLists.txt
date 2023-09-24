@@ -388,7 +388,6 @@ list(APPEND SOURCE_FILES
         displayapp/screens/List.cpp
         displayapp/screens/CheckboxList.cpp
         displayapp/screens/BatteryInfo.cpp
-        displayapp/screens/Steps.cpp
         displayapp/screens/Timer.cpp
         displayapp/screens/PassKey.cpp
         displayapp/screens/Error.cpp

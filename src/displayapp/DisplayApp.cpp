@@ -18,7 +18,6 @@
 #include "displayapp/screens/SystemInfo.h"
 #include "displayapp/screens/Tile.h"
 #include "displayapp/screens/BatteryInfo.h"
-#include "displayapp/screens/Steps.h"
 #include "displayapp/screens/PassKey.h"
 #include "displayapp/screens/Error.h"
 
@@ -471,9 +470,6 @@ void DisplayApp::LoadScreen(Apps app, DisplayApp::FullRefreshDirections directio
       break;
     case Apps::Metronome:
       currentScreen = std::make_unique<Screens::Metronome>(motorController, *systemTask);
-      break;
-    case Apps::Steps:
-      currentScreen = std::make_unique<Screens::Steps>(motionController, settingsController);
       break;
   }
   currentApp = app;
