@@ -23,7 +23,6 @@
 #include "displayapp/screens/Steps.h"
 #include "displayapp/screens/PassKey.h"
 #include "displayapp/screens/Error.h"
-#include "displayapp/screens/Weather.h"
 
 #include "drivers/Cst816s.h"
 #include "drivers/St7789.h"
@@ -409,7 +408,6 @@ void DisplayApp::LoadScreen(Apps app, DisplayApp::FullRefreshDirections directio
                                                        settingsController,
                                                        heartRateController,
                                                        motionController,
-                                                       systemTask->nimble().weather(),
                                                        filesystem);
       break;
 

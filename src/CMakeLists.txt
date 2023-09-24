@@ -382,7 +382,6 @@ list(APPEND SOURCE_FILES
         displayapp/screens/SystemInfo.cpp
         displayapp/screens/Label.cpp
         displayapp/screens/FirmwareUpdate.cpp
-        displayapp/screens/Weather.cpp
         displayapp/screens/Metronome.cpp
         displayapp/screens/FirmwareValidation.cpp
         displayapp/screens/ApplicationList.cpp
@@ -449,7 +448,6 @@ list(APPEND SOURCE_FILES
         components/ble/CurrentTimeService.cpp
         components/ble/AlertNotificationService.cpp
         components/ble/MusicService.cpp
-        components/ble/weather/WeatherService.cpp
         components/ble/NavigationService.cpp
         components/ble/BatteryInformationService.cpp
         components/ble/FSService.cpp
@@ -518,7 +516,6 @@ list(APPEND RECOVERY_SOURCE_FILES
         components/ble/CurrentTimeService.cpp
         components/ble/AlertNotificationService.cpp
         components/ble/MusicService.cpp
-        components/ble/weather/WeatherService.cpp
         components/ble/BatteryInformationService.cpp
         components/ble/FSService.cpp
         components/ble/ImmediateAlertService.cpp
@@ -644,7 +641,6 @@ set(INCLUDE_FILES
         components/ble/BleClient.h
         components/ble/HeartRateService.h
         components/ble/MotionService.h
-        components/ble/weather/WeatherService.h
         components/settings/Settings.h
         components/timer/Timer.h
         components/alarm/AlarmController.h
