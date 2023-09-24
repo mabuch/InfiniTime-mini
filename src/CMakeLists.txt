@@ -378,14 +378,12 @@ list(APPEND SOURCE_FILES
         displayapp/screens/StopWatch.cpp
         displayapp/screens/BatteryIcon.cpp
         displayapp/screens/BleIcon.cpp
-        displayapp/screens/NotificationIcon.cpp
         displayapp/screens/SystemInfo.cpp
         displayapp/screens/Label.cpp
         displayapp/screens/FirmwareUpdate.cpp
         displayapp/screens/Metronome.cpp
         displayapp/screens/FirmwareValidation.cpp
         displayapp/screens/ApplicationList.cpp
-        displayapp/screens/Notifications.cpp
         displayapp/screens/HeartRate.cpp
         displayapp/screens/List.cpp
         displayapp/screens/CheckboxList.cpp
@@ -581,7 +579,6 @@ set(INCLUDE_FILES
         displayapp/screens/StopWatch.h
         displayapp/screens/BatteryIcon.h
         displayapp/screens/BleIcon.h
-        displayapp/screens/NotificationIcon.h
         displayapp/screens/SystemInfo.h
         displayapp/screens/ScreenList.h
         displayapp/screens/Label.h
@@ -591,7 +588,6 @@ set(INCLUDE_FILES
         displayapp/screens/CheckboxList.h
         displayapp/Apps.h
         displayapp/WatchFaces.h
-        displayapp/screens/Notifications.h
         displayapp/screens/HeartRate.h
         displayapp/screens/Metronome.h
         displayapp/screens/Timer.h

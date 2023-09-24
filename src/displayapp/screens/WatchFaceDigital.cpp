@@ -2,7 +2,6 @@
 
 #include <lvgl/lvgl.h>
 #include <cstdio>
-#include "displayapp/screens/NotificationIcon.h"
 #include "displayapp/screens/Symbols.h"
 #include "components/battery/BatteryController.h"
 #include "components/ble/BleController.h"
@@ -29,11 +28,6 @@ WatchFaceDigital::WatchFaceDigital(Controllers::DateTime& dateTimeController,
     statusIcons(batteryController, bleController) {
 
   statusIcons.Create();
-
-  notificationIcon = lv_label_create(lv_scr_act(), nullptr);
-  lv_obj_set_style_local_text_color(notificationIcon, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_LIME);
-  lv_label_set_text_static(notificationIcon, NotificationIcon::GetIcon(false));
-  lv_obj_align(notificationIcon, nullptr, LV_ALIGN_IN_TOP_LEFT, 0, 0);
 
   label_date = lv_label_create(lv_scr_act(), nullptr);
   lv_obj_align(label_date, lv_scr_act(), LV_ALIGN_CENTER, 0, 60);
@@ -79,11 +73,6 @@ WatchFaceDigital::~WatchFaceDigital() {
 
 void WatchFaceDigital::Refresh() {
   statusIcons.Update();
-
-  notificationState = notificationManager.AreNewNotificationsAvailable();
-  if (notificationState.IsUpdated()) {
-    lv_label_set_text_static(notificationIcon, NotificationIcon::GetIcon(notificationState.Get()));
-  }
 
   currentDateTime = std::chrono::time_point_cast<std::chrono::minutes>(dateTimeController.CurrentDateTime());
 

@@ -15,7 +15,6 @@
 #include "displayapp/screens/FirmwareValidation.h"
 #include "displayapp/screens/StopWatch.h"
 #include "displayapp/screens/Metronome.h"
-#include "displayapp/screens/Notifications.h"
 #include "displayapp/screens/SystemInfo.h"
 #include "displayapp/screens/Tile.h"
 #include "displayapp/screens/BatteryInfo.h"
@@ -229,9 +228,6 @@ void DisplayApp::Refresh() {
         //        clockScreen.SetBleConnectionState(bleController.IsConnected() ? Screens::Clock::BleConnectionStates::Connected :
         //        Screens::Clock::BleConnectionStates::NotConnected);
         break;
-      case Messages::NewNotification:
-        LoadNewScreen(Apps::NotificationsPreview, DisplayApp::FullRefreshDirections::Down);
-        break;
       case Messages::TimerDone:
         if (state != States::Running) {
           PushMessageToSystemTask(System::Messages::GoToRunning);
@@ -285,9 +281,6 @@ void DisplayApp::Refresh() {
               case TouchEvents::SwipeUp:
                 LoadNewScreen(Apps::Launcher, DisplayApp::FullRefreshDirections::Up);
                 break;
-              case TouchEvents::SwipeDown:
-                LoadNewScreen(Apps::Notifications, DisplayApp::FullRefreshDirections::Down);
-                break;
               case TouchEvents::SwipeRight:
                 LoadNewScreen(Apps::QuickSettings, DisplayApp::FullRefreshDirections::RightAnim);
                 break;
@@ -315,9 +308,7 @@ void DisplayApp::Refresh() {
         break;
       case Messages::ButtonLongPressed:
         if (currentApp != Apps::Clock) {
-          if (currentApp == Apps::Notifications) {
-            LoadNewScreen(Apps::Clock, DisplayApp::FullRefreshDirections::Up);
-          } else if (currentApp == Apps::QuickSettings) {
+          if (currentApp == Apps::QuickSettings) {
             LoadNewScreen(Apps::Clock, DisplayApp::FullRefreshDirections::LeftAnim);
           } else {
             LoadNewScreen(Apps::Clock, DisplayApp::FullRefreshDirections::Down);
@@ -329,11 +320,6 @@ void DisplayApp::Refresh() {
       case Messages::ButtonLongerPressed:
         // Create reboot app and open it instead
         LoadNewScreen(Apps::SysInfo, DisplayApp::FullRefreshDirections::Up);
-        break;
-      case Messages::ButtonDoubleClicked:
-        if (currentApp != Apps::Notifications && currentApp != Apps::NotificationsPreview) {
-          LoadNewScreen(Apps::Notifications, DisplayApp::FullRefreshDirections::Down);
-        }
         break;
 
       case Messages::BleFirmwareUpdateStarted:
@@ -423,22 +409,6 @@ void DisplayApp::LoadScreen(Apps app, DisplayApp::FullRefreshDirections directio
       currentScreen = std::make_unique<Screens::PassKey>(bleController.GetPairingKey());
       break;
 
-    case Apps::Notifications:
-      currentScreen = std::make_unique<Screens::Notifications>(this,
-                                                               notificationManager,
-                                                               systemTask->nimble().alertService(),
-                                                               motorController,
-                                                               *systemTask,
-                                                               Screens::Notifications::Modes::Normal);
-      break;
-    case Apps::NotificationsPreview:
-      currentScreen = std::make_unique<Screens::Notifications>(this,
-                                                               notificationManager,
-                                                               systemTask->nimble().alertService(),
-                                                               motorController,
-                                                               *systemTask,
-                                                               Screens::Notifications::Modes::Preview);
-      break;
     case Apps::Timer:
       currentScreen = std::make_unique<Screens::Timer>(timer);
       break;

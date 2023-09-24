@@ -250,7 +250,7 @@ void SystemTask::Work() {
             } else {
               displayApp.PushMessage(Pinetime::Applications::Display::Messages::RestoreBrightness);
             }
-            displayApp.PushMessage(Pinetime::Applications::Display::Messages::NewNotification);
+            //displayApp.PushMessage(Pinetime::Applications::Display::Messages::NewNotification);
           }
           break;
         case Messages::SetOffAlarm:
@@ -459,7 +459,6 @@ void SystemTask::HandleButtonAction(Controllers::ButtonActions action) {
       }
       break;
     case Actions::DoubleClick:
-      displayApp.PushMessage(Applications::Display::Messages::ButtonDoubleClicked);
       break;
     case Actions::LongPress:
       displayApp.PushMessage(Applications::Display::Messages::ButtonLongPressed);
