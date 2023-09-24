@@ -1,7 +1,6 @@
 #include "displayapp/DisplayApp.h"
 #include <libraries/log/nrf_log.h>
 #include "displayapp/screens/HeartRate.h"
-#include "displayapp/screens/Motion.h"
 #include "displayapp/screens/Timer.h"
 #include "displayapp/screens/Alarm.h"
 #include "components/battery/BatteryController.h"
@@ -14,16 +13,11 @@
 #include "displayapp/screens/Clock.h"
 #include "displayapp/screens/FirmwareUpdate.h"
 #include "displayapp/screens/FirmwareValidation.h"
-#include "displayapp/screens/InfiniPaint.h"
-#include "displayapp/screens/Paddle.h"
 #include "displayapp/screens/StopWatch.h"
 #include "displayapp/screens/Metronome.h"
-#include "displayapp/screens/Music.h"
-#include "displayapp/screens/Navigation.h"
 #include "displayapp/screens/Notifications.h"
 #include "displayapp/screens/SystemInfo.h"
 #include "displayapp/screens/Tile.h"
-#include "displayapp/screens/Twos.h"
 #include "displayapp/screens/FlashLight.h"
 #include "displayapp/screens/BatteryInfo.h"
 #include "displayapp/screens/Steps.h"
@@ -406,9 +400,6 @@ void DisplayApp::LoadScreen(Apps app, DisplayApp::FullRefreshDirections directio
       currentScreen =
         std::make_unique<Screens::ApplicationList>(this, settingsController, batteryController, bleController, dateTimeController, filesystem);
       break;
-    case Apps::Motion:
-      // currentScreen = std::make_unique<Screens::Motion>(motionController);
-      // break;
     case Apps::None:
     case Apps::Clock:
       currentScreen = std::make_unique<Screens::Clock>(dateTimeController,
@@ -519,32 +510,12 @@ void DisplayApp::LoadScreen(Apps app, DisplayApp::FullRefreshDirections directio
     case Apps::StopWatch:
       currentScreen = std::make_unique<Screens::StopWatch>(*systemTask);
       break;
-    case Apps::Twos:
-      currentScreen = std::make_unique<Screens::Twos>();
-      break;
-    case Apps::Paint:
-      currentScreen = std::make_unique<Screens::InfiniPaint>(lvgl, motorController);
-      break;
-    case Apps::Paddle:
-      currentScreen = std::make_unique<Screens::Paddle>(lvgl);
-      break;
-    case Apps::Music:
-      currentScreen = std::make_unique<Screens::Music>(systemTask->nimble().music());
-      break;
-    case Apps::Navigation:
-      currentScreen = std::make_unique<Screens::Navigation>(systemTask->nimble().navigation());
-      break;
     case Apps::HeartRate:
       currentScreen = std::make_unique<Screens::HeartRate>(heartRateController, *systemTask);
       break;
     case Apps::Metronome:
       currentScreen = std::make_unique<Screens::Metronome>(motorController, *systemTask);
       break;
-    /* Weather debug app
-    case Apps::Weather:
-      currentScreen = std::make_unique<Screens::Weather>(this, systemTask->nimble().weather());
-      break;
-    */
     case Apps::Steps:
       currentScreen = std::make_unique<Screens::Steps>(motionController, settingsController);
       break;
