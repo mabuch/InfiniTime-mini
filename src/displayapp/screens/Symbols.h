@@ -43,6 +43,9 @@ namespace Pinetime {
 
         static constexpr const char* notificationsOff = "\xEE\x9F\xB6";
         static constexpr const char* notificationsOn = "\xEE\x9F\xB7";
+
+        static constexpr const char* bigBluetooth = "\xEE\x86\xA7";
+        static constexpr const char* bigBluetoothOff = "\xEE\x86\xA9";
       }
     }
   }
