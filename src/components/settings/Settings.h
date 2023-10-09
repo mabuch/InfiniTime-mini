@@ -164,17 +164,6 @@ namespace Pinetime {
         return settings.brightLevel;
       };
 
-      void SetStepsGoal(uint32_t goal) {
-        if (goal != settings.stepsGoal) {
-          settingsChanged = true;
-        }
-        settings.stepsGoal = goal;
-      };
-
-      uint32_t GetStepsGoal() const {
-        return settings.stepsGoal;
-      };
-
       void SetBleRadioEnabled(bool enabled) {
         bleRadioEnabled = enabled;
       };
@@ -190,7 +179,6 @@ namespace Pinetime {
 
       struct SettingsData {
         uint32_t version = settingsVersion;
-        uint32_t stepsGoal = 10000;
         uint32_t screenTimeOut = 15000;
 
         ClockType clockType = ClockType::H24;
@@ -210,7 +198,6 @@ namespace Pinetime {
 
       uint8_t appMenu = 0;
       uint8_t settingsMenu = 0;
-      uint8_t watchFacesMenu = 0;
       /* ble state is intentionally not saved with the other watch settings and initialized
        * to off (false) on every boot because we always want ble to be enabled on startup
        */
