@@ -32,7 +32,6 @@
 #include "displayapp/screens/settings/SettingWakeUp.h"
 #include "displayapp/screens/settings/SettingDisplay.h"
 #include "displayapp/screens/settings/SettingSetDateTime.h"
-#include "displayapp/screens/settings/SettingChimes.h"
 
 #include "libs/lv_conf.h"
 
@@ -328,10 +327,6 @@ void DisplayApp::Refresh() {
         // Added to remove warning
         // What should happen here?
         break;
-      case Messages::Chime:
-        LoadNewScreen(Apps::Clock, DisplayApp::FullRefreshDirections::None);
-        motorController.RunForDuration(35);
-        break;
       case Messages::OnChargingEvent:
         RestoreBrightness();
         motorController.RunForDuration(15);
@@ -433,9 +428,6 @@ void DisplayApp::LoadScreen(Apps app, DisplayApp::FullRefreshDirections directio
       break;
     case Apps::SettingSetDateTime:
       currentScreen = std::make_unique<Screens::SettingSetDateTime>(this, dateTimeController, settingsController);
-      break;
-    case Apps::SettingChimes:
-      currentScreen = std::make_unique<Screens::SettingChimes>(settingsController);
       break;
     case Apps::BatteryInfo:
       currentScreen = std::make_unique<Screens::BatteryInfo>(batteryController);

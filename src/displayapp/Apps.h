@@ -21,7 +21,6 @@ namespace Pinetime {
       SettingDisplay,
       SettingWakeUp,
       SettingSetDateTime,
-      SettingChimes,
       Error
     };
   }

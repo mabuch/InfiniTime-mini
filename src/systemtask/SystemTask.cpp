@@ -334,28 +334,6 @@ void SystemTask::Work() {
           // Remember we'll have to reset the counter next time we're awake
           stepCounterMustBeReset = true;
           break;
-        case Messages::OnNewHour:
-          using Pinetime::Controllers::AlarmController;
-          if (settingsController.GetNotificationStatus() != Controllers::Settings::Notification::Sleep &&
-              settingsController.GetChimeOption() == Controllers::Settings::ChimesOption::Hours &&
-              alarmController.State() != AlarmController::AlarmState::Alerting) {
-            if (state == SystemTaskState::Sleeping) {
-              GoToRunning();
-              displayApp.PushMessage(Pinetime::Applications::Display::Messages::Chime);
-            }
-          }
-          break;
-        case Messages::OnNewHalfHour:
-          using Pinetime::Controllers::AlarmController;
-          if (settingsController.GetNotificationStatus() != Controllers::Settings::Notification::Sleep &&
-              settingsController.GetChimeOption() == Controllers::Settings::ChimesOption::HalfHours &&
-              alarmController.State() != AlarmController::AlarmState::Alerting) {
-            if (state == SystemTaskState::Sleeping) {
-              GoToRunning();
-              displayApp.PushMessage(Pinetime::Applications::Display::Messages::Chime);
-            }
-          }
-          break;
         case Messages::OnChargingEvent:
           batteryController.ReadPowerState();
           displayApp.PushMessage(Applications::Display::Messages::OnChargingEvent);

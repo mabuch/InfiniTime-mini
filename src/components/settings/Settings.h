@@ -11,7 +11,6 @@ namespace Pinetime {
     public:
       enum class ClockType : uint8_t { H24, H12 };
       enum class Notification : uint8_t { On, Off, Sleep };
-      enum class ChimesOption : uint8_t { None, Hours, HalfHours };
       enum class WakeUpMode : uint8_t { SingleTap = 0, DoubleTap = 1, RaiseWrist = 2, LowerWrist = 4 };
       enum class Colors : uint8_t {
         White,
@@ -52,17 +51,6 @@ namespace Pinetime {
 
       Pinetime::Applications::WatchFace GetWatchFace() const {
         return settings.watchFace;
-      };
-
-      void SetChimeOption(ChimesOption chimeOption) {
-        if (chimeOption != settings.chimesOption) {
-          settingsChanged = true;
-        }
-        settings.chimesOption = chimeOption;
-      };
-
-      ChimesOption GetChimeOption() const {
-        return settings.chimesOption;
       };
 
       void SetAppMenu(uint8_t menu) {
@@ -174,7 +162,6 @@ namespace Pinetime {
         Notification notificationStatus = Notification::On;
 
         Pinetime::Applications::WatchFace watchFace = Pinetime::Applications::WatchFace::Digital;
-        ChimesOption chimesOption = ChimesOption::None;
 
         std::bitset<5> wakeUpMode {0};
 
