@@ -409,7 +409,6 @@ list(APPEND SOURCE_FILES
         displayapp/screens/settings/SettingSetTime.cpp
         displayapp/screens/settings/SettingChimes.cpp
         displayapp/screens/settings/SettingShakeThreshold.cpp
-        displayapp/screens/settings/SettingBluetooth.cpp
 
         ## Watch faces
         displayapp/screens/WatchFaceDigital.cpp
