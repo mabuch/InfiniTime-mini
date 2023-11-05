@@ -408,7 +408,6 @@ list(APPEND SOURCE_FILES
         displayapp/screens/settings/SettingSetDate.cpp
         displayapp/screens/settings/SettingSetTime.cpp
         displayapp/screens/settings/SettingChimes.cpp
-        displayapp/screens/settings/SettingShakeThreshold.cpp
 
         ## Watch faces
         displayapp/screens/WatchFaceDigital.cpp

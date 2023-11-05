@@ -22,7 +22,6 @@ namespace Pinetime {
       SettingWakeUp,
       SettingSetDateTime,
       SettingChimes,
-      SettingShakeThreshold,
       Error
     };
   }

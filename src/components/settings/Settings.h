@@ -12,7 +12,7 @@ namespace Pinetime {
       enum class ClockType : uint8_t { H24, H12 };
       enum class Notification : uint8_t { On, Off, Sleep };
       enum class ChimesOption : uint8_t { None, Hours, HalfHours };
-      enum class WakeUpMode : uint8_t { SingleTap = 0, DoubleTap = 1, RaiseWrist = 2, Shake = 3, LowerWrist = 4 };
+      enum class WakeUpMode : uint8_t { SingleTap = 0, DoubleTap = 1, RaiseWrist = 2, LowerWrist = 4 };
       enum class Colors : uint8_t {
         White,
         Silver,
@@ -114,17 +114,6 @@ namespace Pinetime {
         return settings.screenTimeOut;
       };
 
-      void SetShakeThreshold(uint16_t thresh) {
-        if (settings.shakeWakeThreshold != thresh) {
-          settings.shakeWakeThreshold = thresh;
-          settingsChanged = true;
-        }
-      }
-
-      int16_t GetShakeThreshold() const {
-        return settings.shakeWakeThreshold;
-      }
-
       void setWakeUpMode(WakeUpMode wakeUp, bool enabled) {
         if (enabled != isWakeUpModeOn(wakeUp)) {
           settingsChanged = true;
@@ -188,7 +177,6 @@ namespace Pinetime {
         ChimesOption chimesOption = ChimesOption::None;
 
         std::bitset<5> wakeUpMode {0};
-        uint16_t shakeWakeThreshold = 150;
 
         Controllers::BrightnessController::Levels brightLevel = Controllers::BrightnessController::Levels::Medium;
       };

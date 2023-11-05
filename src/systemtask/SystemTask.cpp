@@ -414,8 +414,7 @@ void SystemTask::UpdateMotion() {
     return;
   }
 
-  if (state == SystemTaskState::Sleeping && !(settingsController.isWakeUpModeOn(Pinetime::Controllers::Settings::WakeUpMode::RaiseWrist) ||
-                                              settingsController.isWakeUpModeOn(Pinetime::Controllers::Settings::WakeUpMode::Shake))) {
+  if (state == SystemTaskState::Sleeping && !(settingsController.isWakeUpModeOn(Pinetime::Controllers::Settings::WakeUpMode::RaiseWrist))) {
     return;
   }
 
@@ -429,10 +428,8 @@ void SystemTask::UpdateMotion() {
   motionController.Update(motionValues.x, motionValues.y, motionValues.z, motionValues.steps);
 
   if (settingsController.GetNotificationStatus() != Controllers::Settings::Notification::Sleep) {
-    if ((settingsController.isWakeUpModeOn(Pinetime::Controllers::Settings::WakeUpMode::RaiseWrist) &&
-         motionController.ShouldRaiseWake()) ||
-        (settingsController.isWakeUpModeOn(Pinetime::Controllers::Settings::WakeUpMode::Shake) &&
-         motionController.ShouldShakeWake(settingsController.GetShakeThreshold()))) {
+    if (settingsController.isWakeUpModeOn(Pinetime::Controllers::Settings::WakeUpMode::RaiseWrist) &&
+         motionController.ShouldRaiseWake()) {
       GoToRunning();
     }
   }

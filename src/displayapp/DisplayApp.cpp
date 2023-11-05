@@ -33,7 +33,6 @@
 #include "displayapp/screens/settings/SettingDisplay.h"
 #include "displayapp/screens/settings/SettingSetDateTime.h"
 #include "displayapp/screens/settings/SettingChimes.h"
-#include "displayapp/screens/settings/SettingShakeThreshold.h"
 
 #include "libs/lv_conf.h"
 
@@ -437,9 +436,6 @@ void DisplayApp::LoadScreen(Apps app, DisplayApp::FullRefreshDirections directio
       break;
     case Apps::SettingChimes:
       currentScreen = std::make_unique<Screens::SettingChimes>(settingsController);
-      break;
-    case Apps::SettingShakeThreshold:
-      currentScreen = std::make_unique<Screens::SettingShakeThreshold>(settingsController, motionController, *systemTask);
       break;
     case Apps::BatteryInfo:
       currentScreen = std::make_unique<Screens::BatteryInfo>(batteryController);

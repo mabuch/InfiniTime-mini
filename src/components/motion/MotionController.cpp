@@ -105,16 +105,6 @@ bool MotionController::ShouldRaiseWake() const {
   return DegreesRolled(stats.yMean, stats.zMean, stats.prevYMean, stats.prevZMean) < rollDegreesThresh;
 }
 
-bool MotionController::ShouldShakeWake(uint16_t thresh) {
-  /* Currently Polling at 10hz, If this ever goes faster scalar and EMA might need adjusting */
-  int32_t speed =
-    std::abs(zHistory[0] - zHistory[histSize - 1] + (yHistory[0] - yHistory[histSize - 1]) / 2 + (x - lastX) / 4) * 100 / (time - lastTime);
-  // (.2 * speed) + ((1 - .2) * accumulatedSpeed);
-  accumulatedSpeed = speed / 5 + accumulatedSpeed * 4 / 5;
-
-  return accumulatedSpeed > thresh;
-}
-
 bool MotionController::ShouldLowerSleep() const {
   if (stats.yMean < 724 || DegreesRolled(stats.yMean, stats.zMean, stats.prevYMean, stats.prevZMean) < 30) {
     return false;

@@ -44,13 +44,8 @@ namespace Pinetime {
         return currentTripSteps;
       }
 
-      bool ShouldShakeWake(uint16_t thresh);
       bool ShouldRaiseWake() const;
       bool ShouldLowerSleep() const;
-
-      int32_t CurrentShakeSpeed() const {
-        return accumulatedSpeed;
-      }
 
       DeviceTypes DeviceType() const {
         return deviceType;
@@ -90,7 +85,6 @@ namespace Pinetime {
       static constexpr uint8_t histSize = 8;
       Utility::CircularBuffer<int16_t, histSize> yHistory = {};
       Utility::CircularBuffer<int16_t, histSize> zHistory = {};
-      int32_t accumulatedSpeed = 0;
 
       DeviceTypes deviceType = DeviceTypes::Unknown;
       Pinetime::Controllers::MotionService* service = nullptr;
