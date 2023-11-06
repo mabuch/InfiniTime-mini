@@ -29,11 +29,6 @@ Clock::Clock(Controllers::DateTime& dateTimeController,
     motionController {motionController},
     filesystem {filesystem},
     screen {[this, &settingsController]() {
-      switch (settingsController.GetWatchFace()) {
-        case WatchFace::Digital:
-          return WatchFaceDigitalScreen();
-          break;
-      }
       return WatchFaceDigitalScreen();
     }()} {
   settingsController.SetAppMenu(0);

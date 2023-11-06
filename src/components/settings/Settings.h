@@ -3,7 +3,6 @@
 #include <bitset>
 #include "components/brightness/BrightnessController.h"
 #include "components/fs/FS.h"
-#include "displayapp/WatchFaces.h"
 
 namespace Pinetime {
   namespace Controllers {
@@ -11,27 +10,7 @@ namespace Pinetime {
     public:
       enum class ClockType : uint8_t { H24, H12 };
       enum class Notification : uint8_t { On, Off, Sleep };
-      enum class WakeUpMode : uint8_t { SingleTap = 0, DoubleTap = 1, RaiseWrist = 2, LowerWrist = 4 };
-      enum class Colors : uint8_t {
-        White,
-        Silver,
-        Gray,
-        Black,
-        Red,
-        Maroon,
-        Yellow,
-        Olive,
-        Lime,
-        Green,
-        Cyan,
-        Teal,
-        Blue,
-        Navy,
-        Magenta,
-        Purple,
-        Orange,
-        Pink
-      };
+      enum class WakeUpMode : uint8_t { SingleTap = 0, DoubleTap = 1, RaiseWrist = 2, LowerWrist = 3 };
       Settings(Pinetime::Controllers::FS& fs);
 
       Settings(const Settings&) = delete;
@@ -41,17 +20,6 @@ namespace Pinetime {
 
       void Init();
       void SaveSettings();
-
-      void SetWatchFace(Pinetime::Applications::WatchFace face) {
-        if (face != settings.watchFace) {
-          settingsChanged = true;
-        }
-        settings.watchFace = face;
-      };
-
-      Pinetime::Applications::WatchFace GetWatchFace() const {
-        return settings.watchFace;
-      };
 
       void SetAppMenu(uint8_t menu) {
         appMenu = menu;
@@ -67,13 +35,6 @@ namespace Pinetime {
 
       uint8_t GetSettingsMenu() const {
         return settingsMenu;
-      };
-
-      void SetClockType(ClockType clocktype) {
-        if (clocktype != settings.clockType) {
-          settingsChanged = true;
-        }
-        settings.clockType = clocktype;
       };
 
       ClockType GetClockType() const {
@@ -160,8 +121,6 @@ namespace Pinetime {
 
         ClockType clockType = ClockType::H24;
         Notification notificationStatus = Notification::On;
-
-        Pinetime::Applications::WatchFace watchFace = Pinetime::Applications::WatchFace::Digital;
 
         std::bitset<5> wakeUpMode {0};
 

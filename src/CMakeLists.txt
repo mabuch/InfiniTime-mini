@@ -393,7 +393,6 @@ list(APPEND SOURCE_FILES
         displayapp/screens/Error.cpp
         displayapp/screens/Alarm.cpp
         displayapp/screens/Styles.cpp
-        displayapp/Colors.cpp
         displayapp/widgets/Counter.cpp
         displayapp/widgets/PageIndicator.cpp
         displayapp/widgets/DotIndicator.cpp
@@ -587,7 +586,6 @@ set(INCLUDE_FILES
         displayapp/screens/Metronome.h
         displayapp/screens/Timer.h
         displayapp/screens/Alarm.h
-        displayapp/Colors.h
         displayapp/widgets/Counter.h
         displayapp/widgets/PageIndicator.h
         displayapp/widgets/DotIndicator.h

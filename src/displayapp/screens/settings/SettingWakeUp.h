@@ -25,7 +25,7 @@ namespace Pinetime {
         };
 
         Controllers::Settings& settingsController;
-        static constexpr std::array<Option, 5> options = {{
+        static constexpr std::array<Option, 4> options = {{
           {Controllers::Settings::WakeUpMode::SingleTap, "Single Tap"},
           {Controllers::Settings::WakeUpMode::DoubleTap, "Double Tap"},
           {Controllers::Settings::WakeUpMode::RaiseWrist, "Raise Wrist"},
