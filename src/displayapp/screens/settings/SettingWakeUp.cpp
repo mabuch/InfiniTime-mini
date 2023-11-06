@@ -8,7 +8,7 @@
 
 using namespace Pinetime::Applications::Screens;
 
-constexpr std::array<SettingWakeUp::Option, 5> SettingWakeUp::options;
+constexpr std::array<SettingWakeUp::Option, 4> SettingWakeUp::options;
 
 namespace {
   void event_handler(lv_obj_t* obj, lv_event_t event) {
