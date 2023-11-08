@@ -13,8 +13,6 @@ namespace Pinetime {
   }
 
   namespace Controllers {
-    class Ble;
-
     class FSService {
     public:
       FSService(Pinetime::System::SystemTask& systemTask, Pinetime::Controllers::FS& fs);

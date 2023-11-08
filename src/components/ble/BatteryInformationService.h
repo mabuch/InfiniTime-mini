@@ -6,10 +6,6 @@
 #undef min
 
 namespace Pinetime {
-  namespace System {
-    class SystemTask;
-  }
-
   namespace Controllers {
     class Battery;
 

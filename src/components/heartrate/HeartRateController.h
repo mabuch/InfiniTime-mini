@@ -8,10 +8,6 @@ namespace Pinetime {
     class HeartRateTask;
   }
 
-  namespace System {
-    class SystemTask;
-  }
-
   namespace Controllers {
     class HeartRateController {
     public:

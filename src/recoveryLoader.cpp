@@ -29,7 +29,7 @@ Pinetime::Logging::DummyLogger logger;
 #endif
 
 static constexpr uint8_t displayWidth = 240;
-static constexpr uint8_t displayHeight = 240;
+// static constexpr uint8_t displayHeight = 240;
 static constexpr uint8_t bytesPerPixel = 2;
 
 static constexpr uint16_t colorWhite = 0xFFFF;
