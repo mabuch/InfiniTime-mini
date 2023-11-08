@@ -11,18 +11,9 @@ namespace Pinetime {
         static constexpr const char* plug = "\xEF\x87\xA6";
         static constexpr const char* shoe = "\xEF\x95\x8B";
         static constexpr const char* clock = "\xEF\x80\x97";
-        static constexpr const char* info = "\xEF\x84\xA9";
         static constexpr const char* list = "\xEF\x80\xBA";
         static constexpr const char* sun = "\xEF\x86\x85";
         static constexpr const char* check = "\xEF\x95\xA0";
-        static constexpr const char* tachometer = "\xEF\x8F\xBD";
-        static constexpr const char* phone = "\xEF\x82\x95";
-        static constexpr const char* phoneSlash = "\xEF\x8F\x9D";
-        static constexpr const char* volumMute = "\xEF\x9A\xA9";
-        static constexpr const char* volumUp = "\xEF\x80\xA8";
-        static constexpr const char* volumDown = "\xEF\x80\xA7";
-        static constexpr const char* stepForward = "\xEF\x81\x91";
-        static constexpr const char* stepBackward = "\xEF\x81\x88";
         static constexpr const char* play = "\xEF\x81\x8B";
         static constexpr const char* pause = "\xEF\x81\x8C";
         static constexpr const char* stop = "\xEF\x81\x8D";
@@ -31,8 +22,6 @@ namespace Pinetime {
         static constexpr const char* lapsFlag = "\xEF\x80\xA4";
         static constexpr const char* drum = "\xEF\x95\xA9";
         static constexpr const char* eye = "\xEF\x81\xAE";
-        static constexpr const char* home = "\xEF\x80\x95";
-        static constexpr const char* sleep = "\xEE\xBD\x84";
 
         // lv_font_sys_48.c
         static constexpr const char* settings = "\xEE\xA2\xB8";
@@ -43,6 +32,7 @@ namespace Pinetime {
 
         static constexpr const char* notificationsOff = "\xEE\x9F\xB6";
         static constexpr const char* notificationsOn = "\xEE\x9F\xB7";
+        static constexpr const char* sleep = "\xEE\xBD\x84";
 
         static constexpr const char* bigBluetooth = "\xEE\x86\xA7";
         static constexpr const char* bigBluetoothOff = "\xEE\x86\xA9";
