@@ -16,7 +16,6 @@
 #include "components/ble/DfuService.h"
 #include "components/ble/FSService.h"
 #include "components/ble/HeartRateService.h"
-#include "components/ble/ImmediateAlertService.h"
 #include "components/ble/ServiceDiscovery.h"
 #include "components/ble/MotionService.h"
 #include "components/fs/FS.h"
@@ -84,7 +83,6 @@ namespace Pinetime {
       AlertNotificationClient alertNotificationClient;
       CurrentTimeService currentTimeService;
       BatteryInformationService batteryInformationService;
-      ImmediateAlertService immediateAlertService;
       HeartRateService heartRateService;
       MotionService motionService;
       FSService fsService;
