@@ -432,7 +432,6 @@ list(APPEND SOURCE_FILES
         components/ble/NimbleController.cpp
         components/ble/DeviceInformationService.cpp
         components/ble/CurrentTimeClient.cpp
-        components/ble/AlertNotificationClient.cpp
         components/ble/DfuService.cpp
         components/ble/CurrentTimeService.cpp
         components/ble/AlertNotificationService.cpp
@@ -497,7 +496,6 @@ list(APPEND RECOVERY_SOURCE_FILES
         components/ble/NimbleController.cpp
         components/ble/DeviceInformationService.cpp
         components/ble/CurrentTimeClient.cpp
-        components/ble/AlertNotificationClient.cpp
         components/ble/DfuService.cpp
         components/ble/CurrentTimeService.cpp
         components/ble/AlertNotificationService.cpp
@@ -611,7 +609,6 @@ set(INCLUDE_FILES
         components/ble/NimbleController.h
         components/ble/DeviceInformationService.h
         components/ble/CurrentTimeClient.h
-        components/ble/AlertNotificationClient.h
         components/ble/DfuService.h
         components/firmwarevalidator/FirmwareValidator.h
         components/ble/BatteryInformationService.h

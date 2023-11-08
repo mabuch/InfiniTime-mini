@@ -7,7 +7,6 @@
 #include <host/ble_gap.h>
 #undef max
 #undef min
-#include "components/ble/AlertNotificationClient.h"
 #include "components/ble/AlertNotificationService.h"
 #include "components/ble/BatteryInformationService.h"
 #include "components/ble/CurrentTimeClient.h"
@@ -80,7 +79,6 @@ namespace Pinetime {
       DeviceInformationService deviceInformationService;
       CurrentTimeClient currentTimeClient;
       AlertNotificationService anService;
-      AlertNotificationClient alertNotificationClient;
       CurrentTimeService currentTimeService;
       BatteryInformationService batteryInformationService;
       HeartRateService heartRateService;
