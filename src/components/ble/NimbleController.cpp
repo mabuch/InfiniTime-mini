@@ -15,7 +15,6 @@
 #undef max
 #undef min
 #include "components/ble/BleController.h"
-#include "components/ble/NotificationManager.h"
 #include "components/datetime/DateTimeController.h"
 #include "components/fs/FS.h"
 #include "systemtask/SystemTask.h"
@@ -25,7 +24,6 @@ using namespace Pinetime::Controllers;
 NimbleController::NimbleController(Pinetime::System::SystemTask& systemTask,
                                    Ble& bleController,
                                    DateTime& dateTimeController,
-                                   NotificationManager& notificationManager,
                                    Battery& batteryController,
                                    Pinetime::Drivers::SpiNorFlash& spiNorFlash,
                                    HeartRateController& heartRateController,
@@ -39,7 +37,6 @@ NimbleController::NimbleController(Pinetime::System::SystemTask& systemTask,
     dfuService {systemTask, bleController, spiNorFlash},
 
     currentTimeClient {dateTimeController},
-    anService {systemTask, notificationManager},
     currentTimeService {dateTimeController},
     batteryInformationService {batteryController},
     heartRateService {*this, heartRateController},
@@ -84,7 +81,6 @@ void NimbleController::Init() {
   deviceInformationService.Init();
   currentTimeClient.Init();
   currentTimeService.Init();
-  anService.Init();
   dfuService.Init();
   batteryInformationService.Init();
   heartRateService.Init();

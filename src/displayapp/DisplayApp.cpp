@@ -6,7 +6,6 @@
 #include "components/battery/BatteryController.h"
 #include "components/ble/BleController.h"
 #include "components/datetime/DateTimeController.h"
-#include "components/ble/NotificationManager.h"
 #include "components/motion/MotionController.h"
 #include "components/motor/MotorController.h"
 #include "displayapp/screens/ApplicationList.h"
@@ -55,7 +54,6 @@ DisplayApp::DisplayApp(Drivers::St7789& lcd,
                        const Controllers::Ble& bleController,
                        Controllers::DateTime& dateTimeController,
                        const Drivers::Watchdog& watchdog,
-                       Pinetime::Controllers::NotificationManager& notificationManager,
                        Pinetime::Controllers::HeartRateController& heartRateController,
                        Controllers::Settings& settingsController,
                        Pinetime::Controllers::MotorController& motorController,
@@ -70,7 +68,6 @@ DisplayApp::DisplayApp(Drivers::St7789& lcd,
     bleController {bleController},
     dateTimeController {dateTimeController},
     watchdog {watchdog},
-    notificationManager {notificationManager},
     heartRateController {heartRateController},
     settingsController {settingsController},
     motorController {motorController},
@@ -378,7 +375,6 @@ void DisplayApp::LoadScreen(Apps app, DisplayApp::FullRefreshDirections directio
       currentScreen = std::make_unique<Screens::Clock>(dateTimeController,
                                                        batteryController,
                                                        bleController,
-                                                       notificationManager,
                                                        settingsController,
                                                        heartRateController,
                                                        motionController,

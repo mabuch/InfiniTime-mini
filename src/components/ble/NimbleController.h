@@ -7,7 +7,6 @@
 #include <host/ble_gap.h>
 #undef max
 #undef min
-#include "components/ble/AlertNotificationService.h"
 #include "components/ble/BatteryInformationService.h"
 #include "components/ble/CurrentTimeClient.h"
 #include "components/ble/CurrentTimeService.h"
@@ -31,7 +30,6 @@ namespace Pinetime {
   namespace Controllers {
     class Ble;
     class DateTime;
-    class NotificationManager;
 
     class NimbleController {
 
@@ -39,7 +37,6 @@ namespace Pinetime {
       NimbleController(Pinetime::System::SystemTask& systemTask,
                        Ble& bleController,
                        DateTime& dateTimeController,
-                       NotificationManager& notificationManager,
                        Battery& batteryController,
                        Pinetime::Drivers::SpiNorFlash& spiNorFlash,
                        HeartRateController& heartRateController,
@@ -49,10 +46,6 @@ namespace Pinetime {
       void StartAdvertising();
       int OnGAPEvent(ble_gap_event* event);
       void StartDiscovery();
-
-      Pinetime::Controllers::AlertNotificationService& alertService() {
-        return anService;
-      };
 
       uint16_t connHandle();
       void NotifyBatteryLevel(uint8_t level);
@@ -78,7 +71,6 @@ namespace Pinetime {
 
       DeviceInformationService deviceInformationService;
       CurrentTimeClient currentTimeClient;
-      AlertNotificationService anService;
       CurrentTimeService currentTimeService;
       BatteryInformationService batteryInformationService;
       HeartRateService heartRateService;

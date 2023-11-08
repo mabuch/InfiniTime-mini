@@ -15,7 +15,6 @@ namespace Pinetime {
     class Settings;
     class Battery;
     class Ble;
-    class NotificationManager;
     class HeartRateController;
     class MotionController;
   }
@@ -28,7 +27,6 @@ namespace Pinetime {
         WatchFaceDigital(Controllers::DateTime& dateTimeController,
                          const Controllers::Battery& batteryController,
                          const Controllers::Ble& bleController,
-                         Controllers::NotificationManager& notificationManager,
                          Controllers::Settings& settingsController,
                          Controllers::HeartRateController& heartRateController,
                          Controllers::MotionController& motionController);
@@ -62,7 +60,6 @@ namespace Pinetime {
         lv_obj_t* notificationIcon;
 
         Controllers::DateTime& dateTimeController;
-        Controllers::NotificationManager& notificationManager;
         Controllers::Settings& settingsController;
         Controllers::HeartRateController& heartRateController;
         Controllers::MotionController& motionController;

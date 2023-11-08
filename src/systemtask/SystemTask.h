@@ -14,7 +14,6 @@
 
 #include "systemtask/SystemMonitor.h"
 #include "components/ble/NimbleController.h"
-#include "components/ble/NotificationManager.h"
 #include "components/alarm/AlarmController.h"
 #include "components/fs/FS.h"
 #include "touchhandler/TouchHandler.h"
@@ -62,7 +61,6 @@ namespace Pinetime {
                  Controllers::DateTime& dateTimeController,
                  Controllers::AlarmController& alarmController,
                  Drivers::Watchdog& watchdog,
-                 Pinetime::Controllers::NotificationManager& notificationManager,
                  Pinetime::Drivers::Hrs3300& heartRateSensor,
                  Pinetime::Controllers::MotionController& motionController,
                  Pinetime::Drivers::Bma421& motionSensor,
@@ -108,7 +106,6 @@ namespace Pinetime {
       Pinetime::Controllers::AlarmController& alarmController;
       QueueHandle_t systemTasksMsgQueue;
       Pinetime::Drivers::Watchdog& watchdog;
-      Pinetime::Controllers::NotificationManager& notificationManager;
       Pinetime::Drivers::Hrs3300& heartRateSensor;
       Pinetime::Drivers::Bma421& motionSensor;
       Pinetime::Controllers::Settings& settingsController;

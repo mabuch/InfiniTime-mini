@@ -4,7 +4,6 @@
 #include "components/battery/BatteryController.h"
 #include "components/motion/MotionController.h"
 #include "components/ble/BleController.h"
-#include "components/ble/NotificationManager.h"
 #include "components/settings/Settings.h"
 #include "displayapp/DisplayApp.h"
 #include "displayapp/screens/WatchFaceDigital.h"
@@ -15,7 +14,6 @@ using namespace Pinetime::Applications;
 Clock::Clock(Controllers::DateTime& dateTimeController,
              const Controllers::Battery& batteryController,
              const Controllers::Ble& bleController,
-             Controllers::NotificationManager& notificationManager,
              Controllers::Settings& settingsController,
              Controllers::HeartRateController& heartRateController,
              Controllers::MotionController& motionController,
@@ -23,7 +21,6 @@ Clock::Clock(Controllers::DateTime& dateTimeController,
   : dateTimeController {dateTimeController},
     batteryController {batteryController},
     bleController {bleController},
-    notificationManager {notificationManager},
     settingsController {settingsController},
     heartRateController {heartRateController},
     motionController {motionController},
@@ -50,7 +47,6 @@ std::unique_ptr<Screen> Clock::WatchFaceDigitalScreen() {
   return std::make_unique<Screens::WatchFaceDigital>(dateTimeController,
                                                      batteryController,
                                                      bleController,
-                                                     notificationManager,
                                                      settingsController,
                                                      heartRateController,
                                                      motionController);

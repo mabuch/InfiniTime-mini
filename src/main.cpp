@@ -30,7 +30,6 @@
 #include "BootloaderVersion.h"
 #include "components/battery/BatteryController.h"
 #include "components/ble/BleController.h"
-#include "components/ble/NotificationManager.h"
 #include "components/brightness/BrightnessController.h"
 #include "components/motor/MotorController.h"
 #include "components/datetime/DateTimeController.h"
@@ -102,7 +101,6 @@ Pinetime::Controllers::MotorController motorController {};
 
 Pinetime::Controllers::DateTime dateTimeController {settingsController};
 Pinetime::Drivers::Watchdog watchdog;
-Pinetime::Controllers::NotificationManager notificationManager;
 Pinetime::Controllers::MotionController motionController;
 Pinetime::Controllers::AlarmController alarmController {dateTimeController};
 Pinetime::Controllers::TouchHandler touchHandler;
@@ -115,7 +113,6 @@ Pinetime::Applications::DisplayApp displayApp(lcd,
                                               bleController,
                                               dateTimeController,
                                               watchdog,
-                                              notificationManager,
                                               heartRateController,
                                               settingsController,
                                               motorController,
@@ -134,7 +131,6 @@ Pinetime::System::SystemTask systemTask(spi,
                                         dateTimeController,
                                         alarmController,
                                         watchdog,
-                                        notificationManager,
                                         heartRateSensor,
                                         motionController,
                                         motionSensor,
