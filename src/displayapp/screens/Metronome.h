@@ -21,7 +21,7 @@ namespace Pinetime {
         TickType_t tappedTime = 0;
         Controllers::MotorController& motorController;
         System::SystemTask& systemTask;
-        int16_t bpm = 120;
+        int16_t bpm = 15;
         uint8_t bpb = 4;
         uint8_t counter = 1;
 

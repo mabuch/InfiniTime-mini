@@ -29,13 +29,13 @@ Metronome::Metronome(Controllers::MotorController& motorController, System::Syst
   lv_obj_set_event_cb(bpmArc, eventHandler);
   lv_arc_set_bg_angles(bpmArc, 0, 270);
   lv_arc_set_rotation(bpmArc, 135);
-  lv_arc_set_range(bpmArc, 40, 220);
+  lv_arc_set_range(bpmArc, 10, 60);
   lv_arc_set_value(bpmArc, bpm);
   lv_obj_set_size(bpmArc, 210, 210);
   lv_arc_set_adjustable(bpmArc, true);
   lv_obj_align(bpmArc, lv_scr_act(), LV_ALIGN_IN_TOP_MID, 0, 0);
 
-  bpmValue = createLabel("120", bpmArc, LV_ALIGN_IN_TOP_MID, &jetbrains_mono_76, 0, 55);
+  bpmValue = createLabel("15", bpmArc, LV_ALIGN_IN_TOP_MID, &jetbrains_mono_76, 0, 55);
   createLabel("bpm", bpmValue, LV_ALIGN_OUT_BOTTOM_MID, &jetbrains_mono_bold_20, 0, 0);
 
   bpmTap = lv_btn_create(lv_scr_act(), nullptr);
