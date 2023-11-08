@@ -19,12 +19,6 @@ namespace {
     auto* user_data = static_cast<QuickSettings*>(task->user_data);
     user_data->UpdateScreen();
   }
-
-  enum class ButtonState : lv_state_t {
-    NotificationsOn = LV_STATE_CHECKED,
-    NotificationsOff = LV_STATE_DEFAULT,
-    Sleep = 0x40,
-  };
 }
 
 QuickSettings::QuickSettings(Pinetime::Applications::DisplayApp* app,
@@ -89,29 +83,6 @@ QuickSettings::QuickSettings(Pinetime::Applications::DisplayApp* app,
     lv_label_set_text_static(btn2_lvl, Symbols::bigBluetoothOff);
   }
 
-  btn3 = lv_btn_create(lv_scr_act(), nullptr);
-  btn3->user_data = this;
-  lv_obj_set_event_cb(btn3, ButtonEventHandler);
-  lv_obj_add_style(btn3, LV_BTN_PART_MAIN, &btn_style);
-  lv_obj_set_style_local_bg_color(btn3, LV_BTN_PART_MAIN, static_cast<lv_state_t>(ButtonState::NotificationsOff), LV_COLOR_RED);
-  static constexpr lv_color_t violet = LV_COLOR_MAKE(0x60, 0x00, 0xff);
-  lv_obj_set_style_local_bg_color(btn3, LV_BTN_PART_MAIN, static_cast<lv_state_t>(ButtonState::Sleep), violet);
-  lv_obj_set_size(btn3, buttonWidth, buttonHeight);
-  lv_obj_align(btn3, nullptr, LV_ALIGN_IN_BOTTOM_LEFT, buttonXOffset, 0);
-
-  btn3_lvl = lv_label_create(btn3, nullptr);
-  lv_obj_set_style_local_text_font(btn3_lvl, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &lv_font_sys_48);
-
-  if (settingsController.GetNotificationStatus() == Controllers::Settings::Notification::On) {
-    lv_label_set_text_static(btn3_lvl, Symbols::notificationsOn);
-    lv_obj_set_state(btn3, static_cast<lv_state_t>(ButtonState::NotificationsOn));
-  } else if (settingsController.GetNotificationStatus() == Controllers::Settings::Notification::Off) {
-    lv_label_set_text_static(btn3_lvl, Symbols::notificationsOff);
-  } else {
-    lv_label_set_text_static(btn3_lvl, Symbols::sleep);
-    lv_obj_set_state(btn3, static_cast<lv_state_t>(ButtonState::Sleep));
-  }
-
   btn4 = lv_btn_create(lv_scr_act(), nullptr);
   btn4->user_data = this;
   lv_obj_set_event_cb(btn4, ButtonEventHandler);
@@ -156,23 +127,6 @@ void QuickSettings::OnButtonEvent(lv_obj_t* object) {
     brightness.Step();
     lv_label_set_text_static(btn1_lvl, brightness.GetIcon());
     settingsController.SetBrightness(brightness.Level());
-
-  } else if (object == btn3) {
-
-    if (settingsController.GetNotificationStatus() == Controllers::Settings::Notification::On) {
-      settingsController.SetNotificationStatus(Controllers::Settings::Notification::Off);
-      lv_label_set_text_static(btn3_lvl, Symbols::notificationsOff);
-      lv_obj_set_state(btn3, static_cast<lv_state_t>(ButtonState::NotificationsOff));
-    } else if (settingsController.GetNotificationStatus() == Controllers::Settings::Notification::Off) {
-      settingsController.SetNotificationStatus(Controllers::Settings::Notification::Sleep);
-      lv_label_set_text_static(btn3_lvl, Symbols::sleep);
-      lv_obj_set_state(btn3, static_cast<lv_state_t>(ButtonState::Sleep));
-    } else {
-      settingsController.SetNotificationStatus(Controllers::Settings::Notification::On);
-      lv_label_set_text_static(btn3_lvl, Symbols::notificationsOn);
-      lv_obj_set_state(btn3, static_cast<lv_state_t>(ButtonState::NotificationsOn));
-      motorController.RunForDuration(35);
-    }
 
   } else if (object == btn4) {
     settingsController.SetSettingsMenu(0);

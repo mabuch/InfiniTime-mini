@@ -9,7 +9,6 @@ namespace Pinetime {
     class Settings {
     public:
       enum class ClockType : uint8_t { H24, H12 };
-      enum class Notification : uint8_t { On, Off, Sleep };
       enum class WakeUpMode : uint8_t { SingleTap = 0, DoubleTap = 1, RaiseWrist = 2, LowerWrist = 3 };
       Settings(Pinetime::Controllers::FS& fs);
 
@@ -39,17 +38,6 @@ namespace Pinetime {
 
       ClockType GetClockType() const {
         return settings.clockType;
-      };
-
-      void SetNotificationStatus(Notification status) {
-        if (status != settings.notificationStatus) {
-          settingsChanged = true;
-        }
-        settings.notificationStatus = status;
-      };
-
-      Notification GetNotificationStatus() const {
-        return settings.notificationStatus;
       };
 
       void SetScreenTimeOut(uint32_t timeout) {
@@ -120,7 +108,6 @@ namespace Pinetime {
         uint32_t screenTimeOut = 15000;
 
         ClockType clockType = ClockType::H24;
-        Notification notificationStatus = Notification::On;
 
         std::bitset<5> wakeUpMode {0};
 

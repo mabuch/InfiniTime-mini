@@ -47,8 +47,6 @@ namespace Pinetime {
         lv_obj_t* btn1_lvl;
         lv_obj_t* btn2;
         lv_obj_t* btn2_lvl;
-        lv_obj_t* btn3;
-        lv_obj_t* btn3_lvl;
         lv_obj_t* btn4;
 
         Widgets::StatusIcons statusIcons;

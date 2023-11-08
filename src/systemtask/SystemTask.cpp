@@ -216,8 +216,7 @@ void SystemTask::Work() {
         case Messages::TouchWakeUp: {
           if (touchHandler.ProcessTouchInfo(touchPanel.GetTouchInfo())) {
             auto gesture = touchHandler.GestureGet();
-            if (settingsController.GetNotificationStatus() != Controllers::Settings::Notification::Sleep &&
-                gesture != Pinetime::Applications::TouchEvents::None &&
+            if (gesture != Pinetime::Applications::TouchEvents::None &&
                 ((gesture == Pinetime::Applications::TouchEvents::DoubleTap &&
                   settingsController.isWakeUpModeOn(Pinetime::Controllers::Settings::WakeUpMode::DoubleTap)) ||
                  (gesture == Pinetime::Applications::TouchEvents::Tap &&
@@ -244,14 +243,12 @@ void SystemTask::Work() {
           }
           break;
         case Messages::OnNewNotification:
-          if (settingsController.GetNotificationStatus() == Pinetime::Controllers::Settings::Notification::On) {
-            if (state == SystemTaskState::Sleeping) {
-              GoToRunning();
-            } else {
-              displayApp.PushMessage(Pinetime::Applications::Display::Messages::RestoreBrightness);
-            }
-            //displayApp.PushMessage(Pinetime::Applications::Display::Messages::NewNotification);
+          if (state == SystemTaskState::Sleeping) {
+            GoToRunning();
+          } else {
+            displayApp.PushMessage(Pinetime::Applications::Display::Messages::RestoreBrightness);
           }
+          //displayApp.PushMessage(Pinetime::Applications::Display::Messages::NewNotification);
           break;
         case Messages::SetOffAlarm:
           if (state == SystemTaskState::Sleeping) {
@@ -405,11 +402,9 @@ void SystemTask::UpdateMotion() {
 
   motionController.Update(motionValues.x, motionValues.y, motionValues.z, motionValues.steps);
 
-  if (settingsController.GetNotificationStatus() != Controllers::Settings::Notification::Sleep) {
-    if (settingsController.isWakeUpModeOn(Pinetime::Controllers::Settings::WakeUpMode::RaiseWrist) &&
-         motionController.ShouldRaiseWake()) {
-      GoToRunning();
-    }
+  if (settingsController.isWakeUpModeOn(Pinetime::Controllers::Settings::WakeUpMode::RaiseWrist) &&
+       motionController.ShouldRaiseWake()) {
+    GoToRunning();
   }
   if (settingsController.isWakeUpModeOn(Pinetime::Controllers::Settings::WakeUpMode::LowerWrist) && state == SystemTaskState::Running &&
       motionController.ShouldLowerSleep()) {
