@@ -239,14 +239,6 @@ void SystemTask::Work() {
             alarmController.ScheduleAlarm();
           }
           break;
-        case Messages::OnNewNotification:
-          if (state == SystemTaskState::Sleeping) {
-            GoToRunning();
-          } else {
-            displayApp.PushMessage(Pinetime::Applications::Display::Messages::RestoreBrightness);
-          }
-          //displayApp.PushMessage(Pinetime::Applications::Display::Messages::NewNotification);
-          break;
         case Messages::SetOffAlarm:
           if (state == SystemTaskState::Sleeping) {
             GoToRunning();
