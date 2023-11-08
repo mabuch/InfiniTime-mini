@@ -47,7 +47,7 @@ namespace Pinetime {
           {Symbols::hourGlass, Apps::Timer, true},
           {Symbols::heartBeat, Apps::HeartRate, true},
           {Symbols::drum, Apps::Metronome, true},
-          {Symbols::none, Apps::None, false},
+          {Symbols::batteryHalf, Apps::BatteryInfo, true},
         }};
         ScreenList<nScreens> screens;
       };
